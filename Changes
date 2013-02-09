@@ -1,0 +1,6 @@
+Revision history for Perl extension D64::Disk::Status.
+
+0.01  2013-02-09
+    - initial version (provides basic status class definition and accessor
+      methods, as well as a factory class with all existing 1541 DOS error
+      messages)
