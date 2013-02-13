@@ -41,7 +41,7 @@ use strict;
 use utf8;
 use warnings;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 =head2 new
 
@@ -168,7 +168,7 @@ Pawel Krol, E<lt>pawelkrol@cpan.orgE<gt>.
 
 =head1 VERSION
 
-Version 0.01 (2013-02-09)
+Version 0.02 (2013-02-13)
 
 =head1 COPYRIGHT AND LICENSE
 

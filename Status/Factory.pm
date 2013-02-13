@@ -24,13 +24,13 @@ use strict;
 use utf8;
 use warnings;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use D64::Disk::Status;
 use Data::Dumper;
 use Readonly;
 
-Readonly our %errors => (
+Readonly our $errors => {
     0 => {
         error       => 'OK',
         message     => 'OK',
@@ -201,7 +201,7 @@ Readonly our %errors => (
         message     => 'drive not ready',
         description => 'An attempt has been made to access the 1541 Single Drive Floppy Disk without any diskettes present in either drive.',
     },
-);
+};
 
 =head2 new
 
@@ -236,7 +236,11 @@ sub _init {
         die sprintf q{Unable to create status object: Illegal argument value (%s)}, $class->_dump($code);
     }
 
-    my %params = %{$errors{$code}};
+    unless (exists $errors->{$code}) {
+        die sprintf q{Unable to create status object: Invalid error code number (%s)}, $class->_dump($code);
+    }
+
+    my %params = %{$errors->{$code}};
     $params{code} = $code;
 
     my $status = D64::Disk::Status->new(%params);
@@ -269,7 +273,7 @@ Pawel Krol, E<lt>pawelkrol@cpan.orgE<gt>.
 
 =head1 VERSION
 
-Version 0.01 (2013-02-09)
+Version 0.02 (2013-02-13)
 
 =head1 COPYRIGHT AND LICENSE
 

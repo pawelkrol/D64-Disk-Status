@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 use Test::Exception;
-use Test::More tests => 12;
+use Test::More tests => 13;
 ########################################
 our $class;
 BEGIN {
@@ -87,5 +87,13 @@ BEGIN {
 {
     my $status = $class->new(60);
     is($status->description(), 'This message is generated when a write file that has not been closed is being opened for reading.', 'create status object and get error description');
+}
+########################################
+{
+    throws_ok(
+        sub { $class->new(666); },
+        qr/\QUnable to create status object: Invalid error code number (666)\E/,
+        'create status object with invalid error code number',
+    );
 }
 ########################################
