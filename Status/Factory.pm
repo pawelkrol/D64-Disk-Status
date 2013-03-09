@@ -24,13 +24,13 @@ use strict;
 use utf8;
 use warnings;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 use D64::Disk::Status;
 use Data::Dumper;
 use Readonly;
 
-Readonly our $errors => {
+our %errors = (
     0 => {
         error       => 'OK',
         message     => 'OK',
@@ -201,7 +201,15 @@ Readonly our $errors => {
         message     => 'drive not ready',
         description => 'An attempt has been made to access the 1541 Single Drive Floppy Disk without any diskettes present in either drive.',
     },
-};
+);
+
+our $errors;
+if ($] < 5.008) {
+    eval q{ Readonly \\$errors => \\%errors; };
+}
+else {
+   eval q{ Readonly $errors => \\%errors; };
+}
 
 =head2 new
 
@@ -273,7 +281,7 @@ Pawel Krol, E<lt>pawelkrol@cpan.orgE<gt>.
 
 =head1 VERSION
 
-Version 0.02 (2013-02-13)
+Version 0.03 (2013-03-09)
 
 =head1 COPYRIGHT AND LICENSE
 

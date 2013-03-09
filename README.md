@@ -3,6 +3,11 @@ D64-Disk-Status
 
 `D64::Disk::Status` provides a helper class for `D64::Disk::Layout` module that lets users easily identify CBM floppy error messages and disk drive status details (like error codes, and descriptive diagnostic messages) signalled as results of miscellaneous Commodore (D64/D71/D81) disk image operations.
 
+VERSION
+-------
+
+Version 0.03 (2013-03-09)
+
 INSTALLATION
 ------------
 
