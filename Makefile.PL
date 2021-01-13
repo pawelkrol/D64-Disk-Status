@@ -11,4 +11,19 @@ WriteMakefile(
     ($] >= 5.005 ?
       (ABSTRACT_FROM => 'Status.pm',
        AUTHOR        => 'Pawel Krol <pawelkrol@cpan.org>') : ()),
+    META_MERGE        => {
+        'meta-spec' => {
+            'version' => 2,
+        },
+        'resources' => {
+            'bugtracker' => {
+                'web' => 'https://github.com/pawelkrol/D64-Disk-Status/issues',
+            },
+            'repository' => {
+                'type' => 'git',
+                'url'  => 'git://github.com/pawelkrol/D64-Disk-Status.git',
+                'web'  => 'https://github.com/pawelkrol/D64-Disk-Status.git',
+            },
+        },
+    },
 );
